@@ -1,0 +1,74 @@
+diff '--color=auto' -r TwoButton/Button_Synchronizer.v FourButton/Button_Synchronizer.v
+9c9
+< 	input [1:0] key,
+---
+> 	input [3:0] key,
+11c11
+< 	output reg [1:0] pressed
+---
+> 	output reg [3:0] pressed
+14c14
+< reg [1:0] key1;
+---
+> reg [3:0] key1;
+diff '--color=auto' -r TwoButton/main.v FourButton/main.v
+3,4c3,4
+< 	input [1:0] raw_buttons,
+< 	output reg [1:0] oLed,
+---
+> 	input [3:0] raw_buttons,
+> 	output reg [3:0] oLed,
+14c14
+< 	wire [1:0] raw_bundle = raw_buttons;
+---
+> 	wire [3:0] raw_bundle = raw_buttons;
+16c16
+< 	wire [1:0] buttons;
+---
+> 	wire [3:0] buttons;
+151c151
+< 							oLed[0]=1; oLed[1]=1;
+---
+> 							oLed[0]=1; oLed[1]=1; oLed[2]=1; oLed[3]=1;
+188,189c188,189
+< 						2'b01: begin
+< 							oLed[0]=1; oLed[1]=0;
+---
+> 						4'b0001: begin
+> 							oLed[0]=1; oLed[1]=0; oLed[2]=0; oLed[3]=0;
+191,192c191,198
+< 						2'b10: begin
+< 							oLed[0]=0; oLed[1]=1;
+---
+> 						4'b0010: begin
+> 							oLed[0]=0; oLed[1]=1; oLed[2]=0; oLed[3]=0;
+> 						end
+> 						4'b0100: begin
+> 							oLed[0]=0; oLed[1]=0; oLed[2]=1; oLed[3]=0;
+> 						end
+> 						4'b1000: begin
+> 							oLed[0]=0; oLed[1]=0; oLed[2]=0; oLed[3]=1;
+195c201
+< 							oLed[0]=0; oLed[1]=0;
+---
+> 							oLed[0]=0; oLed[1]=0; oLed[2]=0; oLed[3]=0;
+202a209,210
+> 					oLed[2] = ~buttons[3];
+> 					oLed[3] = ~buttons[2];
+205c213
+< 					oLed[0]=1; oLed[1]=1;
+---
+> 					oLed[0]=1; oLed[1]=1; oLed[2]=1; oLed[3]=1;
+208c216
+< 					oLed[0]=0; oLed[1]=0;
+---
+> 					oLed[0]=0; oLed[1]=0; oLed[2]=0; oLed[3]=0;
+214c222
+< 			oLed[0]=0; oLed[1]=0;
+---
+> 			oLed[0]=0; oLed[1]=0; oLed[2]=0; oLed[3]=0;
+diff '--color=auto' -r TwoButton/Sequence_Generator.v FourButton/Sequence_Generator.v
+21c21
+< 	assign seq = 8'b1 << current[0];
+---
+> 	assign seq = 8'b1 << current[1:0];
