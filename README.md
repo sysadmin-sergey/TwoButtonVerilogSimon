@@ -10,3 +10,6 @@ To go to more than four bytes requires more changes on the main file but the dif
 # The reason for two buttons
 
 Originally I had implementations for 4 and 8 buttons but since I have not been able to figure out how to properly wire additional buttons to my board that only has 2 buttons, I have made a 2 button edition so that I would be able to utilize the buttons.
+
+
+A useful resource that I referenced while making this simon game was https://github.com/cemulate/simple-simon.
