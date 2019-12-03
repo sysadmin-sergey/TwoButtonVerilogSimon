@@ -1,6 +1,6 @@
 # Two Button Verilog Simon
 
-This repository was made for an Honors Contract for a class. These verilog files (\*.v) can be compiled together and will result in a program file utilizing two buttons.
+This repository was made for an Honors Contract for a class. These verilog files (\*.v) can be compiled together and will result in a simon game that uses two buttons.
 
 # TwoToFour.diff
 
